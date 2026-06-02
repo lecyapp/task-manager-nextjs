@@ -31,7 +31,7 @@ export default function Home() {
         </section>
 
         <section className="py-16">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md p-8">
               <div className="text-slate-600 text-3xl mb-4">✓</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
