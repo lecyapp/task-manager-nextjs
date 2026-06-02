@@ -20,9 +20,10 @@ const priorityColors = {
 interface TaskCardProps {
   task: Task;
   onStatusChange?: () => void;
+  onDeleted?: () => void;
 }
 
-export default function TaskCard({ task, onStatusChange }: TaskCardProps) {
+export default function TaskCard({ task, onStatusChange, onDeleted }: TaskCardProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleStatusToggle = async () => {
@@ -75,7 +76,7 @@ export default function TaskCard({ task, onStatusChange }: TaskCardProps) {
         >
           {isLoading ? "Updating..." : "Next Status"}
         </button>
-        <DeleteButton taskId={task.id} />
+        <DeleteButton taskId={task.id} onDeleted={onDeleted} />
       </div>
     </div>
   );

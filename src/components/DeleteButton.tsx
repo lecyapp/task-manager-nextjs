@@ -3,7 +3,12 @@
 import { useState } from "react";
 import { deleteTask } from "@/app/actions/task";
 
-export default function DeleteButton({ taskId }: { taskId: string }) {
+interface DeleteButtonProps {
+  taskId: string;
+  onDeleted?: () => void;
+}
+
+export default function DeleteButton({ taskId, onDeleted }: DeleteButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -12,6 +17,7 @@ export default function DeleteButton({ taskId }: { taskId: string }) {
     try {
       await deleteTask(taskId);
       setShowConfirm(false);
+      onDeleted?.();
     } catch (error) {
       console.error("Error deleting task:", error);
     } finally {

@@ -82,7 +82,7 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
       ) : (
         <div className="grid gap-4">
           {filteredTasks.map((task) => (
-            <TaskCard key={task.id} task={task} onStatusChange={refreshTasks} />
+            <TaskCard key={task.id} task={task} onStatusChange={refreshTasks} onDeleted={refreshTasks} />
           ))}
         </div>
       )}
