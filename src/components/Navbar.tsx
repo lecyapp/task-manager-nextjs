@@ -34,6 +34,12 @@ export default function Navbar() {
                 >
                   Dashboard
                 </Link>
+                <Link
+                  href="/profile"
+                  className="hover:text-slate-300 transition"
+                >
+                  Profile
+                </Link>
                 <div className="flex items-center gap-3">
                   <span className="text-sm">{session.user.name}</span>
                   <button
