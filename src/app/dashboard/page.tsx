@@ -1,7 +1,6 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
-import TaskCard from "@/components/TaskCard";
 import DashboardClient from "./client";
 
 export const metadata = {
@@ -60,7 +59,7 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <DashboardClient initialTasks={tasks} />
+        <DashboardClient initialTasks={JSON.parse(JSON.stringify(tasks))} />
       </div>
     </div>
   );
