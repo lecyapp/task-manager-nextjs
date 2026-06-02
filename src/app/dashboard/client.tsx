@@ -46,7 +46,7 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
         <h2 className="text-2xl font-bold text-gray-900">Your Tasks</h2>
         <button
           onClick={() => setIsFormOpen(true)}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-semibold transition"
+          className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg font-semibold transition"
         >
           + New Task
         </button>
@@ -73,7 +73,7 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
           {tasks.length === 0 && (
             <button
               onClick={() => setIsFormOpen(true)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-semibold transition inline-block"
+              className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg font-semibold transition inline-block"
             >
               Create Your First Task
             </button>

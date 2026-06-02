@@ -36,7 +36,7 @@ export default function TaskCard({ task }: { task: Task }) {
     : null;
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-indigo-500">
+    <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-gray-700">
       <div className="flex justify-between items-start mb-2">
         <h3 className="text-lg font-semibold text-gray-900">{task.title}</h3>
         <span className={`px-2 py-1 rounded text-xs font-medium ${statusColors[task.status as keyof typeof statusColors]}`}>
@@ -65,7 +65,7 @@ export default function TaskCard({ task }: { task: Task }) {
         <button
           onClick={handleStatusToggle}
           disabled={isLoading}
-          className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-medium disabled:opacity-50 transition"
+          className="flex-1 bg-gray-800 hover:bg-gray-900 text-white py-2 rounded text-sm font-medium disabled:opacity-50 transition"
         >
           {isLoading ? "Updating..." : "Next Status"}
         </button>

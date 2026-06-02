@@ -59,7 +59,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
               type="text"
               name="title"
               required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
               placeholder="Task title"
             />
           </div>
@@ -70,7 +70,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             </label>
             <textarea
               name="description"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
               placeholder="Task description"
               rows={3}
             />
@@ -83,7 +83,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             <select
               name="priority"
               defaultValue="medium"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -98,7 +98,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             <input
               type="date"
               name="dueDate"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
 
@@ -106,7 +106,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded font-medium disabled:opacity-50 transition"
+              className="flex-1 bg-gray-800 hover:bg-gray-900 text-white py-2 rounded font-medium disabled:opacity-50 transition"
             >
               {isLoading ? "Creating..." : "Create Task"}
             </button>

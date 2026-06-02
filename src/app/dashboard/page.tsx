@@ -38,7 +38,7 @@ export default async function DashboardPage() {
         <div className="grid md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-lg shadow-md p-6">
             <p className="text-gray-600 text-sm font-medium mb-2">Total Tasks</p>
-            <p className="text-3xl font-bold text-indigo-600">{stats.total}</p>
+            <p className="text-3xl font-bold text-gray-800">{stats.total}</p>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6">
             <p className="text-gray-600 text-sm font-medium mb-2">Pending</p>
