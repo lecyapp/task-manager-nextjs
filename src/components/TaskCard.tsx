@@ -42,7 +42,7 @@ export default function TaskCard({ task, onStatusChange }: TaskCardProps) {
     : null;
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-gray-700">
+    <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-slate-600">
       <div className="flex justify-between items-start mb-2">
         <h3 className="text-lg font-semibold text-gray-900">{task.title}</h3>
         <span className={`px-2 py-1 rounded text-xs font-medium ${statusColors[task.status as keyof typeof statusColors]}`}>
@@ -51,13 +51,13 @@ export default function TaskCard({ task, onStatusChange }: TaskCardProps) {
       </div>
 
       {task.description && (
-        <p className="text-gray-600 text-sm mb-3">{task.description}</p>
+        <p className="text-gray-500 text-sm mb-3">{task.description}</p>
       )}
 
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-4">
           {formattedDate && (
-            <span className="text-xs text-gray-500">Due: {formattedDate}</span>
+            <span className="text-xs text-gray-400">Due: {formattedDate}</span>
           )}
           <span
             className={`text-sm font-medium ${priorityColors[task.priority as keyof typeof priorityColors]}`}
@@ -71,7 +71,7 @@ export default function TaskCard({ task, onStatusChange }: TaskCardProps) {
         <button
           onClick={handleStatusToggle}
           disabled={isLoading}
-          className="flex-1 bg-gray-800 hover:bg-gray-900 text-white py-2 rounded text-sm font-medium disabled:opacity-50 transition"
+          className="flex-1 bg-slate-700 hover:bg-slate-800 text-white py-2 rounded text-sm font-medium disabled:opacity-50 transition"
         >
           {isLoading ? "Updating..." : "Next Status"}
         </button>

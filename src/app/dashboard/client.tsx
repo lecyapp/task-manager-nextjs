@@ -46,7 +46,7 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
         <h2 className="text-2xl font-bold text-gray-900">Your Tasks</h2>
         <button
           onClick={() => setIsFormOpen(true)}
-          className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg font-semibold transition"
+          className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-2 rounded-lg font-semibold transition"
         >
           + New Task
         </button>
@@ -61,11 +61,11 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
 
       {isLoading ? (
         <div className="text-center py-8">
-          <p className="text-gray-600">Loading tasks...</p>
+          <p className="text-gray-500">Loading tasks...</p>
         </div>
       ) : filteredTasks.length === 0 ? (
         <div className="bg-white rounded-lg shadow-md p-8 text-center">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-500 mb-4">
             {tasks.length === 0
               ? "No tasks yet. Create one to get started!"
               : "No tasks match your filters."}
@@ -73,7 +73,7 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
           {tasks.length === 0 && (
             <button
               onClick={() => setIsFormOpen(true)}
-              className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-lg font-semibold transition inline-block"
+              className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-2 rounded-lg font-semibold transition inline-block"
             >
               Create Your First Task
             </button>

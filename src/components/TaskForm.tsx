@@ -42,7 +42,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-        <h2 className="text-2xl font-bold mb-6">Create New Task</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Create New Task</h2>
 
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -59,7 +59,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
               type="text"
               name="title"
               required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-slate-400"
               placeholder="Task title"
             />
           </div>
@@ -70,7 +70,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             </label>
             <textarea
               name="description"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-slate-400"
               placeholder="Task description"
               rows={3}
             />
@@ -83,7 +83,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             <select
               name="priority"
               defaultValue="medium"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-slate-400"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -98,7 +98,7 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             <input
               type="date"
               name="dueDate"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-slate-400"
             />
           </div>
 
@@ -106,14 +106,14 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-1 bg-gray-800 hover:bg-gray-900 text-white py-2 rounded font-medium disabled:opacity-50 transition"
+              className="flex-1 bg-slate-800 hover:bg-slate-900 text-white py-2 rounded font-medium disabled:opacity-50 transition"
             >
               {isLoading ? "Creating..." : "Create Task"}
             </button>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded font-medium transition"
+              className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 rounded font-medium transition"
             >
               Cancel
             </button>

@@ -14,7 +14,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-800 text-white shadow-md">
+    <nav className="bg-slate-800 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-1">
@@ -30,7 +30,7 @@ export default function Navbar() {
               <>
                 <Link
                   href="/dashboard"
-                  className="hover:text-gray-300 transition"
+                  className="hover:text-slate-300 transition"
                 >
                   Dashboard
                 </Link>
@@ -38,7 +38,7 @@ export default function Navbar() {
                   <span className="text-sm">{session.user.name}</span>
                   <button
                     onClick={handleSignOut}
-                    className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded transition"
+                    className="bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded transition"
                   >
                     Sign Out
                   </button>
@@ -48,13 +48,13 @@ export default function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="hover:text-gray-300 transition"
+                  className="hover:text-slate-300 transition"
                 >
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded transition"
+                  className="bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded transition"
                 >
                   Register
                 </Link>
