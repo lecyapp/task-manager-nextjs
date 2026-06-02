@@ -1,7 +1,7 @@
 "use client";
 
 import { Task } from "@/generated/prisma";
-import { toggleTaskStatus, deleteTask } from "@/app/actions/task";
+import { toggleTaskStatus } from "@/app/actions/task";
 import { useState } from "react";
 import DeleteButton from "./DeleteButton";
 
@@ -17,13 +17,19 @@ const priorityColors = {
   high: "text-red-600",
 };
 
-export default function TaskCard({ task }: { task: Task }) {
+interface TaskCardProps {
+  task: Task;
+  onStatusChange?: () => void;
+}
+
+export default function TaskCard({ task, onStatusChange }: TaskCardProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleStatusToggle = async () => {
     setIsLoading(true);
     try {
       await toggleTaskStatus(task.id);
+      onStatusChange?.();
     } catch (error) {
       console.error("Error updating status:", error);
     } finally {
