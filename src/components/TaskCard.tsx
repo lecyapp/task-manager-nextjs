@@ -1,36 +1,59 @@
 "use client";
 
-import { Task } from "@/generated/prisma";
-import { toggleTaskStatus } from "@/app/actions/task";
 import { useState } from "react";
 import DeleteButton from "./DeleteButton";
 
-const statusColors = {
+const statusColors: Record<string, string> = {
   pending: "bg-gray-200 text-gray-800",
   in_progress: "bg-yellow-200 text-yellow-800",
   completed: "bg-green-200 text-green-800",
 };
 
-const priorityColors = {
+const priorityColors: Record<string, string> = {
   low: "text-green-600",
   medium: "text-yellow-600",
   high: "text-red-600",
 };
 
-interface TaskCardProps {
-  task: Task;
-  onStatusChange?: () => void;
-  onDeleted?: () => void;
+interface Task {
+  id: string;
+  title: string;
+  description: string | null;
+  status: string;
+  priority: string;
+  dueDate: string | null;
+  createdAt: string;
+  updatedAt: string;
+  userId: string;
 }
 
-export default function TaskCard({ task, onStatusChange, onDeleted }: TaskCardProps) {
+interface TaskCardProps {
+  task: Task;
+  onRefresh?: () => void;
+}
+
+export default function TaskCard({ task, onRefresh }: TaskCardProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleStatusToggle = async () => {
     setIsLoading(true);
     try {
-      await toggleTaskStatus(task.id);
-      onStatusChange?.();
+      const nextStatus =
+        task.status === "completed"
+          ? "pending"
+          : task.status === "pending"
+            ? "in_progress"
+            : "completed";
+
+      const res = await fetch(`/api/tasks/${task.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: nextStatus }),
+      });
+
+      if (res.ok) {
+        onRefresh?.();
+      }
     } catch (error) {
       console.error("Error updating status:", error);
     } finally {
@@ -46,7 +69,7 @@ export default function TaskCard({ task, onStatusChange, onDeleted }: TaskCardPr
     <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-slate-600">
       <div className="flex justify-between items-start mb-2">
         <h3 className="text-lg font-semibold text-gray-900">{task.title}</h3>
-        <span className={`px-2 py-1 rounded text-xs font-medium ${statusColors[task.status as keyof typeof statusColors]}`}>
+        <span className={`px-2 py-1 rounded text-xs font-medium ${statusColors[task.status] || ""}`}>
           {task.status.replace("_", " ")}
         </span>
       </div>
@@ -61,7 +84,7 @@ export default function TaskCard({ task, onStatusChange, onDeleted }: TaskCardPr
             <span className="text-xs text-gray-400">Due: {formattedDate}</span>
           )}
           <span
-            className={`text-sm font-medium ${priorityColors[task.priority as keyof typeof priorityColors]}`}
+            className={`text-sm font-medium ${priorityColors[task.priority] || ""}`}
           >
             {task.priority}
           </span>
@@ -76,7 +99,7 @@ export default function TaskCard({ task, onStatusChange, onDeleted }: TaskCardPr
         >
           {isLoading ? "Updating..." : "Next Status"}
         </button>
-        <DeleteButton taskId={task.id} onDeleted={onDeleted} />
+        <DeleteButton taskId={task.id} onDeleted={onRefresh} />
       </div>
     </div>
   );

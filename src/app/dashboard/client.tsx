@@ -1,11 +1,21 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Task } from "@/generated/prisma";
 import TaskCard from "@/components/TaskCard";
 import TaskForm from "@/components/TaskForm";
 import TaskFilter from "@/components/TaskFilter";
-import { getTasks } from "@/app/actions/task";
+
+interface Task {
+  id: string;
+  title: string;
+  description: string | null;
+  status: string;
+  priority: string;
+  dueDate: string | null;
+  createdAt: string;
+  updatedAt: string;
+  userId: string;
+}
 
 interface DashboardClientProps {
   initialTasks: Task[];
@@ -21,8 +31,11 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
   const refreshTasks = useCallback(async () => {
     setIsLoading(true);
     try {
-      const updatedTasks = await getTasks();
-      setTasks(updatedTasks);
+      const res = await fetch("/api/tasks");
+      if (res.ok) {
+        const data = await res.json();
+        setTasks(data);
+      }
     } catch (error) {
       console.error("Error refreshing tasks:", error);
     } finally {
@@ -82,7 +95,7 @@ export default function DashboardClient({ initialTasks }: DashboardClientProps) 
       ) : (
         <div className="grid gap-4">
           {filteredTasks.map((task) => (
-            <TaskCard key={task.id} task={task} onStatusChange={refreshTasks} onDeleted={refreshTasks} />
+            <TaskCard key={task.id} task={task} onRefresh={refreshTasks} />
           ))}
         </div>
       )}

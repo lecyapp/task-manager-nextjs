@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, Dispatch, SetStateAction } from "react";
-import { createTask } from "@/app/actions/task";
 
 interface TaskFormProps {
   onTaskCreated: () => void;
@@ -24,12 +23,22 @@ export default function TaskForm({ onTaskCreated, setIsOpen }: TaskFormProps) {
     const dueDate = formData.get("dueDate") as string;
 
     try {
-      await createTask(
-        title,
-        description || null,
-        priority,
-        dueDate ? new Date(dueDate) : null
-      );
+      const res = await fetch("/api/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title,
+          description: description || null,
+          priority,
+          dueDate: dueDate || null,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Failed to create task");
+      }
+
       onTaskCreated();
       setIsOpen(false);
     } catch (err) {

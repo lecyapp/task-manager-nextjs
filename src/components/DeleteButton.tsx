@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { deleteTask } from "@/app/actions/task";
 
 interface DeleteButtonProps {
   taskId: string;
@@ -15,9 +14,14 @@ export default function DeleteButton({ taskId, onDeleted }: DeleteButtonProps) {
   const handleDelete = async () => {
     setIsLoading(true);
     try {
-      await deleteTask(taskId);
-      setShowConfirm(false);
-      onDeleted?.();
+      const res = await fetch(`/api/tasks/${taskId}`, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        setShowConfirm(false);
+        onDeleted?.();
+      }
     } catch (error) {
       console.error("Error deleting task:", error);
     } finally {
