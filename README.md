@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskMaster - Personal Task Manager
+
+A full-stack personal task management web application built with **Next.js 16**, **NextAuth v5**, **Prisma 7**, and **Tailwind CSS 4**.
+
+**Live Demo**: [https://advanced-project-phi.vercel.app](https://advanced-project-phi.vercel.app)
+
+## Features
+
+- **User Authentication** - Secure registration and login with bcrypt password hashing and JWT sessions
+- **Task CRUD** - Create, read, update, and delete tasks
+- **Status Tracking** - Tasks flow through pending → in progress → completed
+- **Priority Levels** - Assign low, medium, or high priority to tasks
+- **Due Dates** - Set optional due dates for tasks
+- **Filtering** - Filter tasks by status and priority
+- **Statistics Dashboard** - View task counts by status
+- **Responsive Design** - Works on desktop, tablet, and mobile
+
+## Tech Stack
+
+- **Framework**: Next.js 16.2.7 (App Router, React Server Components)
+- **Language**: TypeScript
+- **Authentication**: NextAuth v5 (Auth.js) with Credentials Provider
+- **Database**: PostgreSQL via Prisma 7 ORM
+- **Styling**: Tailwind CSS 4
+- **Password Hashing**: bcryptjs
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database
+
+### Installation
+
+```bash
+git clone https://github.com/lecyapp/task-manager-nextjs.git
+cd task-manager-nextjs
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file:
+
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/taskmaster"
+AUTH_SECRET="your-secret-key-here"
+NEXTAUTH_URL="http://localhost:3000"
+```
+
+### Database Setup
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── api/auth/          # Auth routes
+│   ├── api/tasks/         # Task API routes
+│   ├── actions/task.ts    # Server Actions
+│   ├── dashboard/         # Dashboard page
+│   ├── login/             # Login page
+│   ├── register/          # Register page
+│   └── page.tsx           # Landing page
+├── components/            # Reusable UI components
+├── lib/                   # Auth & Prisma config
+└── types/                 # TypeScript type extensions
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Li Baishun (Student ID: 6486464)
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is for educational purposes as part of the 631-1 Advanced Assignment.
