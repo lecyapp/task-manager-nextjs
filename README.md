@@ -1,38 +1,40 @@
-# TaskMaster - Personal Task Manager
+# TaskMaster - 个人任务管理系统
 
-A full-stack personal task management web application built with **Next.js 16**, **NextAuth v5**, **Prisma 7**, and **Tailwind CSS 4**.
+基于 **Next.js 16**、**NextAuth v5**、**Prisma 7** 和 **Tailwind CSS 4** 构建的全栈个人任务管理 Web 应用。
 
-**Live Demo**: [https://advanced-project-phi.vercel.app](https://advanced-project-phi.vercel.app)
+**在线演示**: [https://advanced-project-phi.vercel.app](https://advanced-project-phi.vercel.app)
 
-## Features
+## 功能特性
 
-- **User Authentication** - Secure registration and login with bcrypt password hashing and JWT sessions
-- **Task CRUD** - Create, read, update, and delete tasks
-- **Status Tracking** - Tasks flow through pending → in progress → completed
-- **Priority Levels** - Assign low, medium, or high priority to tasks
-- **Due Dates** - Set optional due dates for tasks
-- **Filtering** - Filter tasks by status and priority
-- **Statistics Dashboard** - View task counts by status
-- **Responsive Design** - Works on desktop, tablet, and mobile
+- **用户认证** - 支持注册和登录，使用 bcrypt 密码哈希和 JWT 会话管理
+- **密码重置** - 通过邮箱验证码重置密码
+- **任务管理** - 创建、查看、编辑和删除任务
+- **状态流转** - 任务状态依次为：待处理 → 进行中 → 已完成
+- **优先级设置** - 可设置低、中、高三个优先级
+- **截止日期** - 可为任务设置截止日期
+- **筛选功能** - 按状态和优先级筛选任务
+- **统计面板** - 查看各状态任务数量统计
+- **用户资料** - 编辑个人信息和修改密码
+- **响应式设计** - 适配桌面端、平板和移动端
 
-## Tech Stack
+## 技术栈
 
-- **Framework**: Next.js 16.2.7 (App Router, React Server Components)
-- **Language**: TypeScript
-- **Authentication**: NextAuth v5 (Auth.js) with Credentials Provider
-- **Database**: PostgreSQL via Prisma 7 ORM
-- **Styling**: Tailwind CSS 4
-- **Password Hashing**: bcryptjs
-- **Deployment**: Vercel
+- **框架**: Next.js 16.2.7（App Router，React Server Components）
+- **语言**: TypeScript
+- **认证**: NextAuth v5 (Auth.js)，Credentials Provider
+- **数据库**: PostgreSQL，通过 Prisma 7 ORM 访问
+- **样式**: Tailwind CSS 4
+- **密码加密**: bcryptjs
+- **部署**: Vercel + Neon PostgreSQL
 
-## Getting Started
+## 快速开始
 
-### Prerequisites
+### 环境要求
 
 - Node.js 18+
-- PostgreSQL database
+- PostgreSQL 数据库
 
-### Installation
+### 安装
 
 ```bash
 git clone https://github.com/lecyapp/task-manager-nextjs.git
@@ -40,59 +42,61 @@ cd task-manager-nextjs
 npm install
 ```
 
-### Environment Variables
+### 环境变量
 
-Create a `.env` file:
+创建 `.env` 文件：
 
 ```env
-DATABASE_URL="postgresql://user:password@localhost:5432/taskmaster"
-AUTH_SECRET="your-secret-key-here"
+DATABASE_URL="postgresql://用户名:密码@localhost:5432/taskmaster"
+AUTH_SECRET="你的密钥"
 NEXTAUTH_URL="http://localhost:3000"
 ```
 
-### Database Setup
+### 数据库初始化
 
 ```bash
 npx prisma generate
 npx prisma db push
 ```
 
-### Development
+### 开发模式
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+在浏览器打开 [http://localhost:3000](http://localhost:3000)。
 
-### Production Build
+### 生产构建
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Project Structure
+## 项目结构
 
 ```
 src/
 ├── app/
-│   ├── api/auth/          # Auth routes
-│   ├── api/tasks/         # Task API routes
+│   ├── api/auth/          # 认证相关API
+│   ├── api/tasks/         # 任务API
 │   ├── actions/task.ts    # Server Actions
-│   ├── dashboard/         # Dashboard page
-│   ├── login/             # Login page
-│   ├── register/          # Register page
-│   └── page.tsx           # Landing page
-├── components/            # Reusable UI components
-├── lib/                   # Auth & Prisma config
-└── types/                 # TypeScript type extensions
+│   ├── dashboard/         # 仪表板页面
+│   ├── forgot-password/   # 密码重置页面
+│   ├── login/             # 登录页面
+│   ├── profile/           # 用户资料页面
+│   ├── register/          # 注册页面
+│   └── page.tsx           # 首页
+├── components/            # 可复用UI组件
+├── lib/                   # 认证和数据库配置
+└── types/                 # TypeScript类型定义
 ```
 
-## Author
+## 作者
 
-Li Baishun (Student ID: 6486464)
+李百顺（学号：6486464）
 
-## License
+## 说明
 
-This project is for educational purposes as part of the 631-1 Advanced Assignment.
+本项目为 CIT631-1 高阶作业。
